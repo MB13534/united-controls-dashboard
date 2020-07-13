@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 import SecurityIcon from "@material-ui/icons/Security";
+import ContactsIcon from "@material-ui/icons/Contacts";
 import AccountIcon from "@material-ui/icons/AccountCircle";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -21,7 +22,7 @@ import { useAuth0 } from "../hooks/auth";
 
 const drawerWidth = 270;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   drawer: {
     [theme.breakpoints.up("md")]: {
       width: drawerWidth,
@@ -74,7 +75,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   const classes = useStyles();
   let history = useHistory();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -85,7 +86,7 @@ const Sidebar = props => {
   };
 
   // function for naviating to a specific page in the app
-  const goTo = route => {
+  const goTo = (route) => {
     history.push(`/${route}`);
     localStorage.setItem("last_url", history.location.pathname);
   };
@@ -94,7 +95,7 @@ const Sidebar = props => {
    * Utility function used to determine if a menu link is active
    * @param {*} item
    */
-  const setActive = item => {
+  const setActive = (item) => {
     if (item.exact) {
       return history.location.pathname === `/${item.activePath}`;
     } else {
@@ -119,6 +120,13 @@ const Sidebar = props => {
       icon: SecurityIcon,
       loginRequired: true,
     },
+    {
+      link: "contacts",
+      title: "Contacts",
+      activePath: "contacts",
+      icon: ContactsIcon,
+      loginRequired: true,
+    },
   ];
 
   const returnMenuItem = (item, isAuthenticated, user) => {
@@ -139,7 +147,7 @@ const Sidebar = props => {
     if (item.loginRequired && item.rolesRequired && user) {
       let roleSwitch = false;
       const roles = [...item.rolesRequired];
-      roles.forEach(role => {
+      roles.forEach((role) => {
         if (user["https://ccwcd2.org/roles"].includes(role)) {
           roleSwitch = true;
         }
@@ -162,7 +170,7 @@ const Sidebar = props => {
         <img src={logo} className={classes.logo} alt="Logo" />
       </div>
       <List className={classes.nav}>
-        {MenuItems.map(item => returnMenuItem(item, isAuthenticated, user))}
+        {MenuItems.map((item) => returnMenuItem(item, isAuthenticated, user))}
         {isAuthenticated ? (
           <ListItem button>
             <ListItemIcon className={classes.navIcon}>

@@ -23,17 +23,17 @@ const sequelize = new Sequelize(
 );
 
 fs.readdirSync(__dirname)
-  .filter(file => {
+  .filter((file) => {
     return (
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     );
   })
-  .forEach(file => {
+  .forEach((file) => {
     const model = sequelize["import"](path.join(__dirname, file));
     db[model.name] = model;
   });
 
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
@@ -44,18 +44,19 @@ sequelize
   .then(() => {
     console.log("Connection has been established successfully.");
   })
-  .catch(err => {
+  .catch((err) => {
     console.log("Unable to connect to the database:", err);
   });
 
 db.sequelize = sequelize;
 
 db.ExampleView = require("./Example")(sequelize, Sequelize);
+db.ListContacts = require("./Contacts/ListContacts")(sequelize, Sequelize);
 
-Sequelize.postgres.DECIMAL.parse = function(value) {
+Sequelize.postgres.DECIMAL.parse = function (value) {
   return parseFloat(value);
 };
-Sequelize.postgres.BIGINT.parse = function(value) {
+Sequelize.postgres.BIGINT.parse = function (value) {
   return parseInt(value);
 };
 

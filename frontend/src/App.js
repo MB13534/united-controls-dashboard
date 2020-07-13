@@ -10,6 +10,9 @@ import theme from "./theme";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const AuthenticatedHome = React.lazy(() => import("./pages/AuthenticatedHome"));
+const ContactsManagement = React.lazy(() =>
+  import("./pages/ContactsManagement")
+);
 
 const App = () => {
   const { loading } = useAuth0();
@@ -31,6 +34,12 @@ const App = () => {
               path="/authenticated-home"
               exact
               component={AuthenticatedHome}
+            />
+
+            <PrivateRoute
+              path="/contacts"
+              exact
+              component={ContactsManagement}
             />
 
             <Route path="*">

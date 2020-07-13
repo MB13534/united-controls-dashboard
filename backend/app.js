@@ -3,6 +3,7 @@ const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const ExampleRoutes = require("./routes/Example");
+const ContactsRoutes = require("./routes/Contacts");
 
 const { setHeaders } = require("./middleware");
 
@@ -18,6 +19,7 @@ app.use(setHeaders);
 
 // Set routes
 app.use("/api/example", ExampleRoutes);
+app.use("/api/contacts", ContactsRoutes);
 
 // send 404 if no other route matched
 app.use((req, res) => {
