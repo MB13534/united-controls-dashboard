@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Typography,
@@ -13,7 +12,7 @@ import logo from "../images/starterkit_logo_black.png";
 import Layout from "../components/Layout";
 
 // create page styles
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(4),
   },
@@ -34,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Home = props => {
+const Home = (props) => {
   const classes = useStyles();
 
   return (

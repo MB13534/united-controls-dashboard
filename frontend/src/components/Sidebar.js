@@ -114,13 +114,6 @@ const Sidebar = (props) => {
       loginRequired: false,
     },
     {
-      link: "authenticated-home",
-      title: "Authenticated Home",
-      activePath: "authenticated-home",
-      icon: SecurityIcon,
-      loginRequired: true,
-    },
-    {
       link: "contacts",
       title: "Contacts",
       activePath: "contacts",

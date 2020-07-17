@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useAuth0 } from "./hooks/auth";
@@ -9,10 +9,7 @@ import Loading from "./components/Loading";
 import theme from "./theme";
 
 const Home = React.lazy(() => import("./pages/Home"));
-const AuthenticatedHome = React.lazy(() => import("./pages/AuthenticatedHome"));
-const ContactsManagement = React.lazy(() =>
-  import("./pages/ContactsManagement")
-);
+const Contacts = React.lazy(() => import("./pages/Contacts"));
 
 const App = () => {
   const { loading } = useAuth0();
@@ -29,18 +26,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Home} />
 
-            {/* Private Route Example */}
-            <PrivateRoute
-              path="/authenticated-home"
-              exact
-              component={AuthenticatedHome}
-            />
-
-            <PrivateRoute
-              path="/contacts"
-              exact
-              component={ContactsManagement}
-            />
+            <PrivateRoute path="/contacts" exact component={Contacts} />
 
             <Route path="*">
               <NotFound />
