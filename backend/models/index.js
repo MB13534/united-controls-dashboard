@@ -52,6 +52,10 @@ db.sequelize = sequelize;
 
 db.ExampleView = require("./Example")(sequelize, Sequelize);
 db.ListContacts = require("./Contacts/ListContacts")(sequelize, Sequelize);
+db.ListContactGroups = require("./ContactGroups/ListContactGroups")(
+  sequelize,
+  Sequelize
+);
 
 Sequelize.postgres.DECIMAL.parse = function (value) {
   return parseFloat(value);
