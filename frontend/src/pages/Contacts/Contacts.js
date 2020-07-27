@@ -1,29 +1,80 @@
+// Central imports
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Container } from "@material-ui/core";
+import { Container} from "@material-ui/core";
 import Layout from "../../components/Layout";
+import DataAdminTable from "../../components/DataAdminTable";
+import useFetchData from "../../hooks/useFetchData";
 
+
+
+// Central style
 const useStyles = makeStyles((theme) => ({
+  content: {
+    marginTop: theme.spacing(2),
+  },
   container: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+  },
+  topNav: {
+    marginBottom: theme.spacing(2),
   },
 }));
 
+
 const ContactsManagement = (props) => {
   const classes = useStyles();
-  return (
-    <Layout>
-      <Container maxWidth="lg" className={classes.container}>
-        <Typography variant="h4" gutterBottom>
-          Contacts Management
-        </Typography>
-        <Typography variant="body1" className={classes.description} paragraph>
-          You could put super secret content here that users can only see if
-          they are logged in.
-        </Typography>
-      </Container>
-    </Layout>
-  );
+  const [Data, isLoading, setData] = useFetchData("contacts", []);
+
+const Columns = [
+  {
+    title: "Contact Index",
+    field: "contact_ndx",
+    cellStyle: { minWidth: 250 },
+  },
+  {
+    title: "Name",
+    field: "contact_name",
+    //lookup: formattedRechargeStructureTypes,
+    cellStyle: { minWidth: 200 }
+  },
+  {
+    title: "Email",
+    field: "contact_address",
+    //lookup: formattedStructureTypes,
+    cellStyle: { minWidth: 200 },
+  },
+  {
+    title: "Organization",
+    field: "contact_org",
+   // lookup: formattedStructureTypes,
+    cellStyle: { minWidth: 200 },
+  },
+  { title: "notes", 
+  field: "remark" },
+];
+
+return (
+  <Layout>
+    <section className={classes.root}>
+      <div className={classes.content}>
+        <Container maxWidth="lg" className={classes.container}>
+      
+          <DataAdminTable
+            title="Contacts Management"
+            data={Data}
+            columns={Columns}
+            loading={isLoading}
+            updateHandler={setData}
+            endpoint="contacts"
+            ndxField="contact_ndx"
+          />
+        </Container>
+      </div>
+    </section>
+  </Layout>
+);
 };
 
 export default ContactsManagement;

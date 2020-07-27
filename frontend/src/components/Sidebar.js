@@ -10,7 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
-import SecurityIcon from "@material-ui/icons/Security";
+//import SecurityIcon from "@material-ui/icons/Security";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import AccountIcon from "@material-ui/icons/AccountCircle";
 import Toolbar from "@material-ui/core/Toolbar";

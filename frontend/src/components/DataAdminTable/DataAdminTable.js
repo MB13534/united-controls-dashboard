@@ -8,7 +8,7 @@ import { useAuth0 } from "../../hooks/auth";
 import useFormSubmitStatus from "../../hooks/useFormSubmitStatus";
 import FormSnackbar from "../FormSnackbar";
 import useVisibility from "../../hooks/useVisibility";
-import { copyToClipboard } from "../../util";
+import { copyToClipboard } from "../../utils";
 
 const useStyles = makeStyles((theme) => ({
   table: {
