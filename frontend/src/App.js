@@ -10,6 +10,7 @@ import theme from "./theme";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Contacts = React.lazy(() => import("./pages/Contacts"));
+const ContactGroups = React.lazy(() => import("./pages/ContactGroups"));
 
 const App = () => {
   const { loading } = useAuth0();
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/" exact component={Home} />
 
             <PrivateRoute path="/contacts" exact component={Contacts} />
+            <PrivateRoute path="/contact-groups" exact component={ContactGroups} />
 
             <Route path="*">
               <NotFound />
