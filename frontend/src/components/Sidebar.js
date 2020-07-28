@@ -120,6 +120,13 @@ const Sidebar = (props) => {
       icon: ContactsIcon,
       loginRequired: true,
     },
+    {
+      link: "contact-groups",
+      title: "Contact Groups",
+      activePath: "contact-groups",
+      icon: ContactsIcon,
+      loginRequired: true,
+    },
   ];
 
   const returnMenuItem = (item, isAuthenticated, user) => {
