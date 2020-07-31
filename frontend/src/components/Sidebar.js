@@ -12,6 +12,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 //import SecurityIcon from "@material-ui/icons/Security";
 import ContactsIcon from "@material-ui/icons/Contacts";
+import ContactGroupsIcon from "@material-ui/icons/Group";
 import AccountIcon from "@material-ui/icons/AccountCircle";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -124,7 +125,7 @@ const Sidebar = (props) => {
       link: "contact-groups",
       title: "Contact Groups",
       activePath: "contact-groups",
-      icon: ContactsIcon,
+      icon: ContactGroupsIcon,
       loginRequired: true,
     },
   ];
