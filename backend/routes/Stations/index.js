@@ -5,20 +5,22 @@ const {
 const {
   generateCRUDRoutes,
 } = require("../../middleware/generateCRUDRoutes.js");
-const { ListContactGroups, ContactsGroupsMerged } = require("../../models");
+const { ListStations } = require("../../models");
 
 const router = generateCRUDRoutes({
   middleware: [
     checkAccessToken(process.env.AUTH0_DOMAIN, process.env.AUDIENCE),
   ],
-  model: ListContactGroups,
-  ndxField: "group_ndx",
+  model: ListStations,
+  ndxField: "station_ndx",
   additionalRequests: [
     {
       type: "GET",
-      path: "/merged",
+      path: "/alerts",
       request: (req, res, next) => {
-        ContactsGroupsMerged.findAll()
+        ListStations.findAll({
+          attributes: ["station_ndx", "station_desc"],
+        })
           .then((data) => {
             res.json(data);
           })

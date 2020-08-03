@@ -5,14 +5,14 @@ const {
 const {
   generateCRUDRoutes,
 } = require("../../middleware/generateCRUDRoutes.js");
-const { ListContacts } = require("../../models");
+const { AlertRequestsConfig } = require("../../models");
 
 const router = generateCRUDRoutes({
   middleware: [
     checkAccessToken(process.env.AUTH0_DOMAIN, process.env.AUDIENCE),
   ],
-  model: ListContacts,
-  ndxField: "contact_ndx",
+  model: AlertRequestsConfig,
+  ndxField: "alert_request_ndx",
 });
 
 module.exports = router;

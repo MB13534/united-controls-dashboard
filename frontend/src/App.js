@@ -28,7 +28,11 @@ const App = () => {
             <Route path="/" exact component={Home} />
 
             <PrivateRoute path="/contacts" exact component={Contacts} />
-            <PrivateRoute path="/contact-groups" exact component={ContactGroups} />
+            <PrivateRoute
+              path="/contact-groups"
+              exact
+              component={ContactGroups}
+            />
 
             <Route path="*">
               <NotFound />

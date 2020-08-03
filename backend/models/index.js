@@ -56,6 +56,21 @@ db.ListContactGroups = require("./ContactGroups/ListContactGroups")(
   sequelize,
   Sequelize
 );
+db.ContactsGroupsMerged = require("./ContactGroups/ContactsGroupsMerged")(
+  sequelize,
+  Sequelize
+);
+db.AlertRequestsConfig = require("./Alerts/AlertRequestsConfig")(
+  sequelize,
+  Sequelize
+);
+db.ListAlertTypes = require("./AlertTypes/ListAlertTypes")(
+  sequelize,
+  Sequelize
+);
+db.ListStations = require("./Stations/ListStations")(sequelize, Sequelize);
+db.pgTables = require("./pgTables/pgTables")(sequelize, Sequelize);
+db.Columns = require("./Columns/Columns")(sequelize, Sequelize);
 
 Sequelize.postgres.DECIMAL.parse = function (value) {
   return parseFloat(value);

@@ -5,7 +5,9 @@ const cors = require("cors");
 const ExampleRoutes = require("./routes/Example");
 const ContactsRoutes = require("./routes/Contacts");
 const ContactGroupsRoutes = require("./routes/ContactGroups");
-
+const AlertsRoutes = require("./routes/Alerts");
+const AlertTypeRoutes = require("./routes/AlertTypes");
+const StationsRoutes = require("./routes/Stations");
 const { setHeaders } = require("./middleware");
 
 const PORT = process.env.PORT || 3005;
@@ -22,6 +24,9 @@ app.use(setHeaders);
 app.use("/api/example", ExampleRoutes);
 app.use("/api/contacts", ContactsRoutes);
 app.use("/api/contact-groups", ContactGroupsRoutes);
+app.use("/api/alert-types", AlertTypeRoutes);
+app.use("/api/alerts", AlertsRoutes);
+app.use("/api/stations", StationsRoutes);
 
 // send 404 if no other route matched
 app.use((req, res) => {
