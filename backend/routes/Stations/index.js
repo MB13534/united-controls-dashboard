@@ -19,7 +19,7 @@ const router = generateCRUDRoutes({
       path: "/alerts",
       request: (req, res, next) => {
         ListStations.findAll({
-          attributes: ["station_ndx", "station_desc"],
+          attributes: ["station_ndx", "station_desc", "meas_category"],
         })
           .then((data) => {
             res.json(data);

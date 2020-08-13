@@ -52,6 +52,10 @@ db.sequelize = sequelize;
 
 db.ExampleView = require("./Example")(sequelize, Sequelize);
 db.ListContacts = require("./Contacts/ListContacts")(sequelize, Sequelize);
+db.AssocContactsGroups = require("./Contacts/AssocContactsGroups")(
+  sequelize,
+  Sequelize
+);
 db.ListContactGroups = require("./ContactGroups/ListContactGroups")(
   sequelize,
   Sequelize

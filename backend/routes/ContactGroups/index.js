@@ -5,7 +5,11 @@ const {
 const {
   generateCRUDRoutes,
 } = require("../../middleware/generateCRUDRoutes.js");
-const { ListContactGroups, ContactsGroupsMerged } = require("../../models");
+const {
+  ListContactGroups,
+  ContactsGroupsMerged,
+  AssocContactsGroups,
+} = require("../../models");
 
 const router = generateCRUDRoutes({
   middleware: [
@@ -19,6 +23,19 @@ const router = generateCRUDRoutes({
       path: "/merged",
       request: (req, res, next) => {
         ContactsGroupsMerged.findAll()
+          .then((data) => {
+            res.json(data);
+          })
+          .catch((err) => {
+            next(err);
+          });
+      },
+    },
+    {
+      type: "GET",
+      path: "/assoc/contacts",
+      request: (req, res, next) => {
+        AssocContactsGroups.findAll()
           .then((data) => {
             res.json(data);
           })

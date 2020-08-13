@@ -13,12 +13,14 @@ import LogoutIcon from "@material-ui/icons/ExitToApp";
 //import SecurityIcon from "@material-ui/icons/Security";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import ContactGroupsIcon from "@material-ui/icons/Group";
+import AssocIcon from "@material-ui/icons/GroupWork";
 import AccountIcon from "@material-ui/icons/AccountCircle";
+import AlertsIcon from "@material-ui/icons/Notifications";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-import logo from "../images/starterkit_logo_white.png";
+import logo from "../images/logo.png";
 import { useAuth0 } from "../hooks/auth";
 
 const drawerWidth = 270;
@@ -48,20 +50,23 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     textAlign: "center",
-    padding: theme.spacing(1, 0),
+    padding: theme.spacing(2, 1, 1, 1),
+    color: "#ffffff",
+    backgroundColor: theme.palette.primary.light,
     ...theme.mixins.toolbar,
   },
   drawerPaper: {
     width: drawerWidth,
     overflow: `auto!important`,
     backgroundColor: theme.palette.primary.main,
+    borderRight: "1px solid #ddd",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
   },
   logo: {
-    maxWidth: 160,
+    maxHeight: 50,
   },
   nav: {
     color: `#ffffff`,
@@ -115,9 +120,18 @@ const Sidebar = (props) => {
       loginRequired: false,
     },
     {
+      link: "alerts",
+      title: "Alerts",
+      activePath: "alerts",
+      exact: true,
+      icon: AlertsIcon,
+      loginRequired: true,
+    },
+    {
       link: "contacts",
       title: "Contacts",
       activePath: "contacts",
+      exact: true,
       icon: ContactsIcon,
       loginRequired: true,
     },
@@ -126,6 +140,13 @@ const Sidebar = (props) => {
       title: "Contact Groups",
       activePath: "contact-groups",
       icon: ContactGroupsIcon,
+      loginRequired: true,
+    },
+    {
+      link: "contacts-to-groups",
+      title: "Contact to Groups Associations",
+      activePath: "contacts-to-groups",
+      icon: AssocIcon,
       loginRequired: true,
     },
   ];
@@ -169,6 +190,9 @@ const Sidebar = (props) => {
     <div id="sidebar">
       <div className={classes.toolbar}>
         <img src={logo} className={classes.logo} alt="Logo" />
+        <Typography variant="h6" gutterBottom>
+          United Water and Sanitation District
+        </Typography>
       </div>
       <List className={classes.nav}>
         {MenuItems.map((item) => returnMenuItem(item, isAuthenticated, user))}

@@ -39,7 +39,7 @@ Columns.findAll({
       module.exports = (sequelize, DataTypes) => {
         const { ${types.join(", ")} } = DataTypes;
         const ${fileName} = sequelize.define(
-          ${table},
+          "${table}",
           ${generateFields(mapped)},
           {
             timestamps: false,

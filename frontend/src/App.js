@@ -9,8 +9,12 @@ import Loading from "./components/Loading";
 import theme from "./theme";
 
 const Home = React.lazy(() => import("./pages/Home"));
+const Alerts = React.lazy(() => import("./pages/Alerts"));
 const Contacts = React.lazy(() => import("./pages/Contacts"));
 const ContactGroups = React.lazy(() => import("./pages/ContactGroups"));
+const ContactsToGroupsAssoc = React.lazy(() =>
+  import("./pages/ContactsToGroupsAssoc")
+);
 
 const App = () => {
   const { loading } = useAuth0();
@@ -33,6 +37,12 @@ const App = () => {
               exact
               component={ContactGroups}
             />
+            <PrivateRoute
+              path="/contacts-to-groups"
+              exact
+              component={ContactsToGroupsAssoc}
+            />
+            <PrivateRoute path="/alerts" exact component={Alerts} />
 
             <Route path="*">
               <NotFound />

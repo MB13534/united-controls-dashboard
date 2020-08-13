@@ -34,6 +34,12 @@ function generateCRUDRoutes({
       const reqType = request.type.toUpperCase();
       if (reqType === "GET") {
         router.get(request.path, request.request);
+      } else if (reqType === "POST") {
+        router.post(request.path, request.request);
+      } else if (reqType === "PUT") {
+        router.put(request.path, request.request);
+      } else if (reqType === "DELETE") {
+        router.delete(request.path, request.request);
       }
     });
   }
