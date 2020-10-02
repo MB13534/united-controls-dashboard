@@ -5,7 +5,7 @@ const {
 const {
   generateCRUDRoutes,
 } = require("../../middleware/generateCRUDRoutes.js");
-const { ListContacts, AssocContactsGroups } = require("../../models");
+const { ListContacts, AssocContactsGroups, DeleteContacts } = require("../../models");
 
 const router = generateCRUDRoutes({
   middleware: [
@@ -39,6 +39,19 @@ const router = generateCRUDRoutes({
           .then(() => {
             return AssocContactsGroups.bulkCreate(req.body);
           })
+          .then((data) => {
+            res.json(data);
+          })
+          .catch((err) => {
+            next(err);
+          });
+      },
+    },
+    {
+      type: "DELETE",
+      path: "/:id",
+      request: (req, res, next) => {
+        DeleteContacts.create({ contact_ndx: req.params.id })
           .then((data) => {
             res.json(data);
           })

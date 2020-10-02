@@ -52,6 +52,7 @@ db.sequelize = sequelize;
 
 db.ExampleView = require("./Example")(sequelize, Sequelize);
 db.ListContacts = require("./Contacts/ListContacts")(sequelize, Sequelize);
+db.DeleteContacts = require("./Contacts/DeleteContacts")(sequelize, Sequelize);
 db.AssocContactsGroups = require("./Contacts/AssocContactsGroups")(
   sequelize,
   Sequelize
@@ -60,6 +61,7 @@ db.ListContactGroups = require("./ContactGroups/ListContactGroups")(
   sequelize,
   Sequelize
 );
+db.DeleteGroups = require("./ContactGroups/DeleteGroups")(sequelize, Sequelize);
 db.ContactsGroupsMerged = require("./ContactGroups/ContactsGroupsMerged")(
   sequelize,
   Sequelize

@@ -125,6 +125,38 @@ const DataAdminTable = ({
     })();
   };
 
+  const handleDelete = (oldData) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+        if (oldData) {
+          updateHandler((prevState) => {
+            const data = [...prevState];
+            data.splice(data.indexOf(oldData), 1);
+            submitDelete(oldData);
+            return data;
+          });
+        }
+      }, 600);
+    });
+  };
+
+  const submitDelete = async (record) => {
+    setWaitingState("in progress");
+    try {
+      const token = await getTokenSilently();
+      const headers = { Authorization: `Bearer ${token}` };
+      await axios.delete(
+        `${process.env.REACT_APP_ENDPOINT}/api/${endpoint}/${record[ndxField]}`,
+        { headers }
+      );
+      setWaitingState("complete", "no error");
+    } catch (err) {
+      console.error(err);
+      setWaitingState("complete", "error");
+    }
+  };
+
   return (
     <div className={classes.table}>
       <MaterialTable
@@ -138,6 +170,7 @@ const DataAdminTable = ({
         editable={{
           onRowAdd: handleAdd,
           onRowUpdate: handleUpdate,
+          onRowDelete: handleDelete
         }}
         components={{
           Row: (props) => <MTableBodyRow {...props} />,

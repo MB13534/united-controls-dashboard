@@ -9,6 +9,7 @@ const {
   ListContactGroups,
   ContactsGroupsMerged,
   AssocContactsGroups,
+  DeleteGroups
 } = require("../../models");
 
 const router = generateCRUDRoutes({
@@ -36,6 +37,19 @@ const router = generateCRUDRoutes({
       path: "/assoc/contacts",
       request: (req, res, next) => {
         AssocContactsGroups.findAll()
+          .then((data) => {
+            res.json(data);
+          })
+          .catch((err) => {
+            next(err);
+          });
+      },
+    },
+    {
+      type: "DELETE",
+      path: "/:id",
+      request: (req, res, next) => {
+        DeleteGroups.create({ group_ndx: req.params.id })
           .then((data) => {
             res.json(data);
           })
