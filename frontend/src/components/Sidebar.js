@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 //import SecurityIcon from "@material-ui/icons/Security";
+import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import ContactGroupsIcon from "@material-ui/icons/Group";
 import AssocIcon from "@material-ui/icons/GroupWork";
@@ -149,6 +150,13 @@ const Sidebar = (props) => {
       icon: AssocIcon,
       loginRequired: true,
     },
+    {
+      link: "mobile",
+      title: "Mobile Reports",
+      activePath: "mobile",
+      icon: PhoneAndroidIcon,
+      loginRequired: false,
+    },
   ];
 
   const returnMenuItem = (item, isAuthenticated, user) => {
@@ -225,19 +233,21 @@ const Sidebar = (props) => {
 
   return (
     <div>
-      <Toolbar className={classes.mobileToolbar}>
-        <IconButton
-          color="inherit"
-          aria-label="Open drawer"
-          onClick={handleDrawerToggle}
-          className={classes.menuButton}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" color="inherit" noWrap>
-          LRE Starter Kit Basic
-        </Typography>
-      </Toolbar>
+      <Hidden mdUp implementation="css">
+        <Toolbar className={classes.mobileToolbar}>
+          <IconButton
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit" noWrap>
+            United Water and Sanitation District
+          </Typography>
+        </Toolbar>
+      </Hidden>
       <nav className={classes.drawer}>
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden mdUp implementation="css">

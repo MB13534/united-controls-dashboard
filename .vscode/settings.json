@@ -2,5 +2,12 @@
   "workbench.colorCustomizations": {
     // "titleBar.activeBackground": "#faff96",
     // "titleBar.inactiveBackground": "#faff96",
-  }
+  },
+  // Set the default
+"editor.formatOnSave": true,
+// Enable per-language
+"[javascript]": {
+    "editor.formatOnSave": true
+}
+  
 }

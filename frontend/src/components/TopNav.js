@@ -9,7 +9,7 @@ import Link from "@material-ui/core/Link";
 import { checkActive } from "../utils";
 import { useAuth0 } from "../hooks/auth";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     position: `relative`,
@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TopNav = props => {
+const TopNav = (props) => {
   const classes = useStyles();
   let history = useHistory();
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
@@ -58,7 +58,7 @@ const TopNav = props => {
    * on if menu item is active or not
    * @param {*} url
    */
-  const handleActive = url => {
+  const handleActive = (url) => {
     const active = checkActive(history, url);
     if (active) {
       return classes.activeLink;
@@ -97,7 +97,7 @@ const TopNav = props => {
     if (item.loginRequired && item.rolesRequired && user) {
       let roleSwitch = false;
       const roles = [...item.rolesRequired];
-      roles.forEach(role => {
+      roles.forEach((role) => {
         if (user["https://lre-starter-kit-basic.org/roles"].includes(role)) {
           roleSwitch = true;
         }
@@ -118,10 +118,8 @@ const TopNav = props => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            LRE Starter Kit Basic
-          </Typography>
-          {MenuItems.map(item => returnMenuItem(item, isAuthenticated, user))}
+          <Typography variant="h6" className={classes.title}></Typography>
+          {MenuItems.map((item) => returnMenuItem(item, isAuthenticated, user))}
           {isAuthenticated ? (
             <Link className={handleActive("/logout")} onClick={() => logout()}>
               Logout

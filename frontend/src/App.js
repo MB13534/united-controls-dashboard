@@ -9,6 +9,7 @@ import Loading from "./components/Loading";
 import theme from "./theme";
 
 const Home = React.lazy(() => import("./pages/Home"));
+const Mobile = React.lazy(() => import("./pages/Mobile"));
 const Alerts = React.lazy(() => import("./pages/Alerts"));
 const Contacts = React.lazy(() => import("./pages/Contacts"));
 const ContactGroups = React.lazy(() => import("./pages/ContactGroups"));
@@ -30,6 +31,8 @@ const App = () => {
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route path="/" exact component={Home} />
+
+            <Route path="/mobile" exact component={Mobile} />
 
             <PrivateRoute path="/contacts" exact component={Contacts} />
             <PrivateRoute
