@@ -23,16 +23,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ContactsManagement = (props) => {
+const ContactsManagement = () => {
   const classes = useStyles();
   const [Data, isLoading, setData] = useFetchData("contacts", []);
 
 const Columns = [
-  {
-    title: "Contact Index",
-    field: "contact_ndx",
-    cellStyle: { minWidth: 250 },
-  },
   {
     title: "Name",
     field: "contact_name",

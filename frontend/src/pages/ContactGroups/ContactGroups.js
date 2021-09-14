@@ -22,16 +22,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ContactGroupsManagement = (props) => {
+const ContactGroupsManagement = () => {
   const classes = useStyles();
   const [Data, isLoading, setData] = useFetchData("contact-groups", []);
 
 const Columns = [
-  {
-    title: "Contact Group Index",
-    field: "group_ndx",
-    cellStyle: { minWidth: 250 },
-  },
   {
     title: "Group Description",
     field: "group_desc",
