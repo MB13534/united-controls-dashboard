@@ -176,11 +176,13 @@ const ContactsToGroupsAssoc = (props) => {
       title: "Contact Groups",
       path: "/contact-groups",
     },
-    {
-      id: 3,
-      title: "Group to Contact Associations",
-      path: "/groups-to-contacts",
-    },
+    /* NOT BUILT YET
+        {
+          id: 3,
+          title: "Group to Contact Associations",
+          path: "/groups-to-contacts",
+        },
+    */
   ];
 
   return (

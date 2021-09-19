@@ -40,10 +40,15 @@ const AlertsManagement = (props) => {
   const formattedContacts = useFormatLookup(
     Contacts,
     "merged_ndx",
-    "addresses"
+    "group_with_addresses"
   );
 
   const Columns = [
+    {
+      title: "Enabled",
+      field: "enabled",
+      type: "boolean",
+    },
     {
       title: "Measurement Station",
       field: "station_ndx",
@@ -59,11 +64,6 @@ const AlertsManagement = (props) => {
       field: "alert_value",
     },
     {
-      title: "Distribution List",
-      field: "alert_address_ndx",
-      lookup: formattedContacts,
-    },
-    {
       title: "Reset Interval Hours",
       field: "reset_interval_hours",
     },
@@ -74,9 +74,9 @@ const AlertsManagement = (props) => {
       editable: "never",
     },
     {
-      title: "Enabled",
-      field: "enabled",
-      type: "boolean",
+      title: "Distribution List",
+      field: "alert_address_ndx",
+      lookup: formattedContacts,
     },
     { title: "notes", field: "remark" },
   ];

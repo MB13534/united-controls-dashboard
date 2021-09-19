@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       addresses: {
         type: TEXT,
       },
+      group_with_addresses: {
+        type: TEXT,
+      },
     },
     {
       timestamps: false,
